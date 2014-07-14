@@ -51,7 +51,15 @@
     (pari a-seq #{})))
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [n2 0
+         n1 0
+         x 0]
+    (let [nex (if (< x 2)
+      x
+      (+ n1 n2))]
+    (if (= x n)
+      nex
+      (recur n1 nex (inc x))))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
