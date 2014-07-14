@@ -38,8 +38,17 @@
       :else (recur (rest sq) (+ sum (first sq)) (inc cnt))))]
     (av a-seq 0 0)))
 
+(defn toggle [a-set elem]
+  (cond
+    (contains? a-set elem) (disj a-set elem)
+    :else (conj a-set elem)))
+
 (defn parity [a-seq]
-  ":(")
+  (let [pari (fn [sq st]
+    (cond
+      (empty? sq) st
+      :else (recur (rest sq) (toggle st (first sq)))))]
+    (pari a-seq #{})))
 
 (defn fast-fibo [n]
   ":(")
