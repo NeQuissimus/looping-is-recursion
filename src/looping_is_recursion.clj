@@ -24,7 +24,12 @@
     (compar seq1 seq2)))
 
 (defn find-first-index [pred a-seq]
-  ":(")
+  (let [firstIndex (fn [sq idx]
+    (cond
+      (empty? sq) nil
+      (pred (first sq)) idx
+      :else (recur (rest sq) (inc idx))))]
+    (firstIndex a-seq 0)))
 
 (defn avg [a-seq]
   -1)
