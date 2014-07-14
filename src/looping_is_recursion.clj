@@ -62,5 +62,12 @@
       (recur n1 nex (inc x))))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [res []
+          st #{}
+          rst a-seq]
+    (if (empty? rst)
+      res
+      (if (contains? st (first rst))
+        res
+        (recur (conj res (first rst)) (conj st (first rst)) (rest rst))))))
 
