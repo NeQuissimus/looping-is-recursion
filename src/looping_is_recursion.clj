@@ -32,7 +32,11 @@
     (firstIndex a-seq 0)))
 
 (defn avg [a-seq]
-  -1)
+  (let [av (fn [sq sum cnt]
+    (cond
+      (empty? sq) (/ sum cnt)
+      :else (recur (rest sq) (+ sum (first sq)) (inc cnt))))]
+    (av a-seq 0 0)))
 
 (defn parity [a-seq]
   ":(")
