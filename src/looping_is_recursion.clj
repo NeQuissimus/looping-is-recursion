@@ -8,7 +8,11 @@
     (pow exp 1)))
 
 (defn last-element [a-seq]
-  ":(")
+  (let [lastOne (fn [sq prev]
+                  (if (empty? sq)
+                    prev
+                    (recur (rest sq) (first sq))))]
+  (lastOne a-seq nil)))
 
 (defn seq= [seq1 seq2]
   ":(")
